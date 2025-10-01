@@ -10,7 +10,7 @@ class AuthViewModel: ObservableObject {
 
     func login(email: String, password: String) {
         isLoading = true
-        // TODO: implement login
+        // login via API
     }
 
     func logout() {
