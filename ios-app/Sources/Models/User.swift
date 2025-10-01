@@ -5,4 +5,5 @@ struct User: Codable, Identifiable {
     let name: String
     let email: String
     let createdAt: Date
+    var avatarURL: String?
 }
