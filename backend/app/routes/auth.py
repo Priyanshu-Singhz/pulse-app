@@ -10,7 +10,8 @@ class LoginRequest(BaseModel):
 @router.post("/login")
 def login(body: LoginRequest):
     # validate credentials against DB
-    return {"token": "placeholder"}
+    token = create_access_token(body.email)
+    return {"token": token}
 
 @router.post("/logout")
 def logout():
