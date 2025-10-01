@@ -9,7 +9,7 @@ class LoginRequest(BaseModel):
 
 @router.post("/login")
 def login(body: LoginRequest):
-    # TODO: validate credentials
+    # validate credentials against DB
     return {"token": "placeholder"}
 
 @router.post("/logout")
