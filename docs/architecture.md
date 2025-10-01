@@ -15,6 +15,10 @@
 - JWT authentication
 - Deployed on AWS EC2
 
+## Security
+- JWT tokens
+- HTTPS only
+
 ## Infrastructure
 - Docker + docker-compose
 - GitHub Actions CI/CD
