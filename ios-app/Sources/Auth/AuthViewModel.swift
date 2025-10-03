@@ -6,6 +6,7 @@ class AuthViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
 
+    // cancellables set
     private var cancellables = Set<AnyCancellable>()
 
     func login(email: String, password: String) {
