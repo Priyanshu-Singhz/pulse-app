@@ -8,3 +8,5 @@ struct User: Codable, Identifiable {
     var avatarURL: String?
     var bio: String?
 }
+
+// updated 3076
