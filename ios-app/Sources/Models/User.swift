@@ -6,4 +6,5 @@ struct User: Codable, Identifiable {
     let email: String
     let createdAt: Date
     var avatarURL: String?
+    var bio: String?
 }
