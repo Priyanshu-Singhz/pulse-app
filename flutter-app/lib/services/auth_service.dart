@@ -11,6 +11,7 @@ class AuthService {
       });
       return response.data['token'];
     } catch (e) {
+      // handle error
       return null;
     }
   }
