@@ -2,7 +2,7 @@ import jwt
 from datetime import datetime, timedelta
 from app.models.user import User
 
-SECRET_KEY = "changeme"
+SECRET_KEY = "super-secret-key"
 ALGORITHM = "HS256"
 
 def create_access_token(user_id: str) -> str:
