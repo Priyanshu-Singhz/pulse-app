@@ -8,7 +8,7 @@ ALGORITHM = "HS256"
 def create_access_token(user_id: str) -> str:
     payload = {
         "sub": user_id,
-        "exp": datetime.utcnow() + timedelta(hours=24)
+        "exp": datetime.utcnow() + timedelta(hours=48)
     }
     return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
