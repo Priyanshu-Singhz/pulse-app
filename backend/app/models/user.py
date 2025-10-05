@@ -12,3 +12,5 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+// updated 3732
