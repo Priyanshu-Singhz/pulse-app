@@ -15,6 +15,7 @@ class AuthViewModel: ObservableObject {
     }
 
     func logout() {
+        // clear keychain
         isAuthenticated = false
     }
 }
