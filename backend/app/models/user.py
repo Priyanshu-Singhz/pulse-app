@@ -10,4 +10,5 @@ class User(Base):
     id = Column(String, primary_key=True)
     name = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow)
     created_at = Column(DateTime, default=datetime.utcnow)
