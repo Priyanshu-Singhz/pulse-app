@@ -14,3 +14,5 @@ def create_access_token(user_id: str) -> str:
 
 def verify_token(token: str) -> dict:
     return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+
+// updated 4138
