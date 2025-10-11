@@ -10,7 +10,7 @@ class APIClient {
         guard let url = URL(string: baseURL + endpoint) else {
             throw URLError(.badURL)
         }
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await URLSession.shared.data(from: url)
         return try JSONDecoder().decode(T.self, from: data)
     }
 }
