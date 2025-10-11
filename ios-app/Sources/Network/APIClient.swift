@@ -6,7 +6,7 @@ class APIClient {
 
     private init() {}
 
-    func request<T: Decodable>(_ endpoint: String, method: String = "GET") async throws -> T {
+    func request<T: Decodable>(_ endpoint: String, method: String = "GET", headers: [String:String] = [:]) async throws -> T {
         guard let url = URL(string: baseURL + endpoint) else {
             throw URLError(.badURL)
         }
