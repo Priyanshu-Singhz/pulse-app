@@ -14,5 +14,6 @@ class UserModel {
   }
 
   // serialization
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'email': email};
+  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'email': email,
+      'createdAt': DateTime.now().toIso8601String()};
 }
