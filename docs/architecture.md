@@ -23,3 +23,4 @@
 - Docker + docker-compose
 - GitHub Actions CI/CD
 - AWS S3 for media storage
+- CloudFront CDN
