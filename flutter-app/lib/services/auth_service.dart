@@ -8,6 +8,7 @@ class AuthService {
       final response = await _dio.post('/auth/login', data: {
         'email': email,
         'password': password,
+        'device': 'mobile',
       });
       return response.data['token'];
     } catch (e) {
