@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 Start, update, and end iOS Live Activities and Dynamic Island from Flutter using ActivityKit.
                        DESC
-  s.homepage         = 'https://github.com/priyanshu7791/flutter_live_activities'
+  s.homepage         = 'https://github.com/Priyanshu-Singhz/flutter_live_activities'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Priyanshu Singh' => 'priyanshu7791@gmail.com' }
   s.source           = { :path => '.' }

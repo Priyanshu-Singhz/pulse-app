@@ -1,9 +1,9 @@
 name: flutter_live_activities
 description: "A Flutter plugin for iOS Live Activities and Dynamic Island. Start, update, and end Live Activities from Flutter using ActivityKit."
 version: 0.1.0
-homepage: https://github.com/priyanshu7791/flutter_live_activities
-repository: https://github.com/priyanshu7791/flutter_live_activities
-issue_tracker: https://github.com/priyanshu7791/flutter_live_activities/issues
+homepage: https://github.com/Priyanshu-Singhz/flutter_live_activities
+repository: https://github.com/Priyanshu-Singhz/flutter_live_activities
+issue_tracker: https://github.com/Priyanshu-Singhz/flutter_live_activities/issues
 
 environment:
   sdk: ^3.9.0
