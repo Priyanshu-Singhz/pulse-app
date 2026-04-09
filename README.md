@@ -1,109 +1,69 @@
-# flutter_live_activities
+# Pulse — Mobile & Backend Monorepo
 
-A Flutter plugin for iOS Live Activities and Dynamic Island, powered by Apple's ActivityKit.
+A full-stack monorepo powering the **Pulse** app — a real-time social platform built with SwiftUI, Flutter, FastAPI, and PostgreSQL.
 
-## Requirements
+## Structure
 
-- iOS 16.1+
-- Xcode 14+
-- A physical iPhone (Live Activities don't run in the simulator)
-- iPhone 14 Pro or later for Dynamic Island
-
-## Installation
-
-```yaml
-dependencies:
-  live_activities_flutter: ^0.1.0
+```
+/ios-app        → Native iOS app (SwiftUI + UIKit, MVVM)
+/flutter-app    → Cross-platform Flutter app (BLoC)
+/backend        → FastAPI REST API + PostgreSQL
+/docs           → Architecture, API reference, deployment guides
 ```
 
-## iOS Setup
+## Tech Stack
 
-### 1. Info.plist
+| Layer | Technology |
+|---|---|
+| iOS | Swift, SwiftUI, UIKit, Combine |
+| Mobile | Flutter, Dart, BLoC |
+| Backend | Python, FastAPI, PostgreSQL |
+| Auth | JWT, bcrypt |
+| Infra | AWS EC2, S3, Docker, GitHub Actions |
+| Push | Firebase Cloud Messaging |
 
-Add these keys to your app's `ios/Runner/Info.plist`:
+## Getting Started
 
-```xml
-<key>NSSupportsLiveActivities</key>
-<true/>
-<key>NSSupportsLiveActivitiesFrequentUpdates</key>
-<true/>
+### Backend
+
+```bash
+cd backend
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
 
-### 2. Widget Extension (required for the UI)
+### Flutter App
 
-The Live Activity UI lives in a separate Xcode Widget Extension target — Flutter doesn't compile it.
-
-1. Open `ios/Runner.xcworkspace` in Xcode
-2. File > New > Target > Widget Extension
-3. Name it `LiveActivityWidget`, uncheck "Include Configuration App Intent"
-4. Replace the generated Swift file with the template at `ios/LiveActivityWidget/LiveActivityWidget.swift`
-5. Set the deployment target to iOS 16.1 for the new target
-
-### 3. App Group (optional, for data sharing)
-
-If your widget needs to read data written by the Flutter app:
-
-1. In Xcode, add an App Group capability to both Runner and the widget extension
-2. Use the same group ID (e.g. `group.com.yourapp`) in both
-3. Pass it as `appGroup` when calling `startActivity`
-
-## Usage
-
-```dart
-import 'package:flutter_live_activities/flutter_live_activities.dart';
-
-// Start
-final handle = await FlutterLiveActivities.startActivity(
-  title: 'Order #1234',
-  data: {
-    'status': 'Preparing',
-    'eta': '25 min',
-    'driver': 'Alex',
-    'progress': 0.2,
-  },
-  appGroup: 'group.com.yourapp', // optional
-);
-
-// Update
-await FlutterLiveActivities.updateActivity(
-  activityId: handle.activityId,
-  data: {
-    'status': 'On the way',
-    'eta': '8 min',
-    'driver': 'Alex',
-    'progress': 0.8,
-  },
-);
-
-// End
-await FlutterLiveActivities.endActivity(handle.activityId);
-
-// End all (e.g. on logout)
-await FlutterLiveActivities.endAllActivities();
-
-// Listen to state changes
-FlutterLiveActivities.activityStateStream.listen((update) {
-  print('${update.activityId} → ${update.state}');
-});
-
-// Check if enabled in Settings
-final enabled = await FlutterLiveActivities.areActivitiesEnabled();
+```bash
+cd flutter-app
+flutter pub get
+flutter run
 ```
 
-## Data types
+### iOS App
 
-The `data` map supports `String`, `int`, `double`, and `bool` values.
-Your SwiftUI widget reads them by key from `context.state.data`.
+Open `ios-app` in Xcode, resolve Swift packages, and run on simulator or device.
 
-## Widget Extension template
+## Architecture
 
-See `ios/LiveActivityWidget/LiveActivityWidget.swift` for a ready-to-use
-SwiftUI template showing Lock Screen and Dynamic Island (expanded, compact, minimal) views.
+See [docs/architecture.md](docs/architecture.md) for a full breakdown of the system design.
 
-## Platform support
+## Features
 
-| Platform | Support |
-|----------|---------|
-| iOS      | ✅ 16.1+ |
-| Android  | ❌ |
-| Web      | ❌ |
+- JWT authentication with refresh token rotation
+- Real-time WebSocket messaging
+- Push notifications via Firebase
+- File uploads to AWS S3
+- Offline mode support
+- Biometric authentication (iOS)
+- Dark mode (Flutter + iOS)
+- Admin dashboard
+
+## CI/CD
+
+GitHub Actions handles linting, testing, and deployment to AWS on every push to `main`.
+
+## License
+
+MIT
